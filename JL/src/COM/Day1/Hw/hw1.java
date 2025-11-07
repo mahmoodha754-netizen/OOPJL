@@ -1,16 +1,17 @@
 package COM.Day1.Hw;
-
+import java.util.Scanner;
 public class hw1 {
-        public static void main(String args[]) {
-            // Check if exactly two arguments are passed
-            if (args.length != 2) {
-                System.out.println("Technology is the world bloom platformcd ");
-                return;
-            }
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Enter first string: ");
+            String first = sc.nextLine();
+            System.out.print("Enter second string: ");
+            String second = sc.nextLine();
+            System.out.println(first + " Technologies " + second);
 
-            // Combine and print in required format
-            System.out.println(args[0] + " Technologies " + args[1]);
         }
     }
+
+
 
 
