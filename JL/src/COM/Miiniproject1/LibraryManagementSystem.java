@@ -1,4 +1,4 @@
-package COM.Miniproject;
+package COM.Miiniproject1;
 import java.io.*;
 import java.util.*;
 class Book {

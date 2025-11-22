@@ -7,11 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 public class MultiThreadedLogAnalyzer {
-
-    // Concurrent global keyword counter
     private static ConcurrentHashMap<String, AtomicInteger> globalCounts = new ConcurrentHashMap<>();
-
-    // ------------------- Worker (Callable) -------------------
     static class FileWorker implements Callable<Map<String, Integer>> {
 
         private final File file;
@@ -44,8 +40,6 @@ public class MultiThreadedLogAnalyzer {
             return localMap;
         }
     }
-
-    // ------------------- Sequential Version -------------------
     public static Map<String, Integer> analyzeSequential(File folder, List<String> keywords) throws Exception {
 
         Map<String, Integer> result = new HashMap<>();
@@ -70,8 +64,6 @@ public class MultiThreadedLogAnalyzer {
         }
         return result;
     }
-
-    // ------------------- Concurrent Version -------------------
     public static Map<String, Integer> analyzeConcurrent(File folder, int numThreads, List<String> keywords)
             throws Exception {
 
@@ -104,8 +96,6 @@ public class MultiThreadedLogAnalyzer {
 
         return normalMap;
     }
-
-    // ------------------- Write results to file -------------------
     public static void writeResultToFile(Map<String, Integer> seq, Map<String, Integer> con,
                                          long seqTime, long conTime) throws Exception {
 
@@ -124,8 +114,6 @@ public class MultiThreadedLogAnalyzer {
             con.forEach((k, v) -> pw.println(k + " : " + v));
         }
     }
-
-    // ------------------- MAIN METHOD -------------------
     public static void main(String[] args) throws Exception {
 
         if (args.length < 3) {
